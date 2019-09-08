@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+                name="viewModel"
+                type="com.aryanganotra.jmceconomics.articles.ui.PostViewModel" />
+
+    </data>
+
+    <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_margin="10dp"
+            app:cardCornerRadius="10dp"
+            app:cardBackgroundColor="@color/cardBackground"
+            android:background="?attr/selectableItemBackground"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:shadowColor="@color/colorPrimaryDark"
+
+
+
+           >
+
+        <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+                android:id="@+id/post_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:mutableText="@{viewModel.getPostTitle()}"
+                android:layout_margin="10dp"
+                android:layout_gravity="center"
+                android:padding="5dp"
+                android:textAppearance="@style/ItemPostText"
+                 />
+
+        <TextView
+                android:id="@+id/post_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimaryDark"
+                app:mutableText="@{viewModel.getPostDate()}"
+                android:padding="5dp"
+                android:layout_gravity="center"
+                android:textAppearance="@style/ItemPostText"
+                android:gravity="center"
+        />
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+</layout>

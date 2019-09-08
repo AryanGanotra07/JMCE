@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable name="activity" type="com.aryanganotra.jmceconomics.notes.ui.NotesActivity"/>
+        <variable name="viewModel" type="com.aryanganotra.jmceconomics.notes.ui.NotesListViewModel"/>
+    </data>
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/frame"
+    >
+
+
+
+        <androidx.viewpager.widget.ViewPager android:layout_width="match_parent"
+                                             android:layout_height="match_parent"
+                                             app:layout_behavior="@string/appbar_scrolling_view_behavior"
+                                             android:id="@+id/view_pager"
+
+
+        >
+
+
+        </androidx.viewpager.widget.ViewPager>
+
+
+
+        <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:mutableVisibility="@{viewModel.getLoadingVisibility()}"
+                android:layout_gravity="center"
+                android:indeterminateTint="@color/tabIndicatorColor"
+        />
+
+
+        <com.google.android.material.appbar.AppBarLayout android:layout_width="match_parent"
+                                                         android:layout_height="wrap_content"
+                                                         app:elevation="0dp"
+                                                         android:background="@color/colorNotePrimary"
+
+        >
+
+            <com.google.android.material.appbar.MaterialToolbar
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/toolbar"
+                    android:outlineSpotShadowColor="@color/navigationBarColor"
+                    android:outlineAmbientShadowColor="@color/navigationBarColor"
+                    app:layout_scrollFlags="scroll|enterAlways|snap"
+                    android:shadowColor="@color/colorNoteWindowBackground"
+                    android:theme="@style/ToolbarThemeAc"
+
+            >
+
+                <RelativeLayout android:layout_width="match_parent" android:layout_height="match_parent"
+
+                                android:orientation="horizontal">
+
+
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                              android:text="@string/app_name"
+                              android:textAppearance="@style/NoteTitle"/>
+
+
+                </RelativeLayout>
+
+
+            </com.google.android.material.appbar.MaterialToolbar>
+            <com.google.android.material.tabs.TabLayout android:layout_width="match_parent"
+                                                        android:layout_height="wrap_content"
+                                                        android:id="@+id/tab_layout"
+                                                        app:tabMode="scrollable"
+                                                        android:clipToPadding="false"
+                                                        android:layout_margin="5dp"
+                                                        app:tabGravity="fill"
+                                                        app:tabPaddingStart="20dp"
+                                                        app:tabPaddingEnd="20dp"
+                                                        android:layout_gravity="fill"
+                                                        app:tabTextColor="@color/textColorSecondary"
+
+
+                                                        app:tabRippleColor="@color/colorNoteWindowBackground"
+                                                        app:tabIndicatorColor="@color/tabIndicatorColor"
+                                                        app:tabSelectedTextColor="@color/tabIndicatorColor"
+
+
+
+            >
+
+
+            </com.google.android.material.tabs.TabLayout>
+
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+
+
+
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

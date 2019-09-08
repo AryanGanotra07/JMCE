@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+<variable name="viewModel" type="com.aryanganotra.jmceconomics.notes.ui.NotesFragment"/>
+    </data>
+    <RelativeLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+
+    >
+
+        <androidx.cardview.widget.CardView android:layout_width="match_parent"
+                                           android:layout_height="match_parent"
+                                           android:layout_margin="50dp"
+                                          >
+
+
+
+        <androidx.recyclerview.widget.RecyclerView android:layout_width="match_parent"
+                                                   android:layout_height="match_parent"
+                                                   app:adapter="@{viewModel.getCourseListAdapter()}"
+
+                                                   android:scrollbars="vertical"
+                                                   android:scrollbarStyle="outsideInset"
+                                                   android:scrollbarTrackVertical="@color/colorNoteWindowBackground"
+                                                   android:scrollbarAlwaysDrawVerticalTrack="true"
+                                                   android:id="@+id/recycler_view">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+
+        </androidx.cardview.widget.CardView>
+
+
+
+    </RelativeLayout>
+</layout>

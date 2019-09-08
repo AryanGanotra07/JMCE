@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+        <data>
+                <variable
+                    name = "viewModel"
+                    type="com.aryanganotra.jmceconomics.articles.ui.post.PostListViewModel"/>
+
+        </data>
+
+
+
+
+
+       <androidx.coordinatorlayout.widget.CoordinatorLayout android:layout_width="match_parent"
+                                                            android:layout_height="match_parent"
+       android:id="@+id/frame">
+
+
+
+           <com.google.android.material.appbar.AppBarLayout android:layout_width="match_parent"
+                                                            android:layout_height="wrap_content"
+                                                            app:elevation="0dp"
+                                                            android:background="@color/windowBackground"
+                                                            >
+
+           <com.google.android.material.appbar.MaterialToolbar
+                   android:layout_width="match_parent"
+                                                               android:layout_height="wrap_content"
+                                              android:id="@+id/toolbar"
+                                                               android:outlineSpotShadowColor="@color/navigationBarColor"
+                                                               android:outlineAmbientShadowColor="@color/navigationBarColor"
+                                                               app:layout_scrollFlags="scroll|enterAlways|snap"
+
+                                                               android:background="@color/windowBackground">
+
+               <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent"
+               android:orientation="horizontal">
+
+
+               <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                         android:textColor="@color/textColorPrimary"
+                         android:text="@string/contrarian"
+                         android:layout_weight="1"
+                         android:textAppearance="@style/Title"/>
+
+
+
+
+                   <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+
+                             android:drawablePadding="5dp"
+
+                             android:text="@string/resources"
+                             android:textColor="@color/textColorPrimary"
+                             android:textStyle="bold"
+                              android:layout_margin="10dp"
+                          android:layout_gravity="center"
+                             android:padding="5dp"
+
+                              android:id="@+id/notes_section"
+                              android:onClick="@{viewModel.changeActivityListener}"
+
+                             android:background="?attr/selectableItemBackground"
+                             android:foreground="?android:attr/selectableItemBackground"
+
+                   />
+
+
+               </LinearLayout>
+
+
+           </com.google.android.material.appbar.MaterialToolbar>>
+
+               <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+               android:orientation="horizontal">
+
+
+               <androidx.appcompat.widget.SearchView android:layout_width="match_parent" android:layout_height="wrap_content"
+                           android:queryHint="@string/search"
+                           app:queryTextChangeListener="@{viewModel.queryTextChangeListener}"
+                                                     android:layout_weight="1"
+                           android:id="@+id/search_view">
+
+               </androidx.appcompat.widget.SearchView>
+
+                   <LinearLayout android:layout_width="wrap_content"
+                                 android:layout_height="wrap_content"
+                   android:orientation="horizontal"
+                   android:layout_margin="5dp"
+                   android:layout_gravity="center">
+
+                   <ImageView android:layout_width="24dp" android:layout_height="24dp"
+                              android:src="@drawable/facebook"
+                              android:layout_gravity="center"
+                              android:id="@+id/facebook"
+                              android:background="?attr/selectableItemBackground"
+                              android:foreground="?android:attr/selectableItemBackground"
+
+                   android:layout_margin="5dp"/>
+
+                   <ImageView android:layout_width="24dp" android:layout_height="24dp"
+                              android:src="@drawable/instagram"
+                              android:layout_gravity="center"
+                              android:id="@+id/instagram"
+                              android:background="?attr/selectableItemBackground"
+                              android:foreground="?android:attr/selectableItemBackground"
+                   android:layout_margin="5dp"/>
+
+
+                   </LinearLayout>
+
+
+
+
+               </LinearLayout>
+
+           </com.google.android.material.appbar.AppBarLayout>
+
+
+
+
+
+
+
+
+
+
+                <ProgressBar
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:mutableVisibility="@{viewModel.getLoadingVisibility()}"
+                        android:layout_gravity="center"
+                         />
+
+           <androidx.swiperefreshlayout.widget.SwipeRefreshLayout android:layout_width="match_parent"
+                                                                  android:layout_height="match_parent"
+                                                                  android:id="@+id/swipe_refresh_layout"
+                                                                  app:isRefreshing="@{viewModel.isRefreshing}"
+                                                                  app:refreshListener="@{viewModel.swipeRefreshListener}"
+                                                                  app:layout_behavior="@string/appbar_scrolling_view_behavior"
+
+
+           >
+
+
+               <androidx.recyclerview.widget.RecyclerView android:layout_width="match_parent"
+                                                          android:id="@+id/post_list"
+                                                          app:adapter="@{viewModel.getPostListAdapter()}"
+
+
+                                                          android:layout_height="match_parent">
+
+               </androidx.recyclerview.widget.RecyclerView>
+
+
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+
+
+
+
+
+       </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+
+
+
+
+
+
+</layout>
+

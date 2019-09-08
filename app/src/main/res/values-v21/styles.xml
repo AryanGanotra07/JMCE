@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="AppTheme" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowBackground">@color/windowBackground</item>
+        <item name="android:statusBarColor">@color/navigationBarColor</item>
+        <item name="android:navigationBarColor">@color/navigationBarColor</item>
+        <item name="android:textColorPrimary">@color/textColorPrimary</item>
+        <item name="colorControlHighlight">@color/colorPrimaryDark</item>
+        <item name="colorControlNormal">@color/colorPrimary</item>
+        <item name="colorControlActivated">@color/colorPrimaryDark</item>
+
+
+    </style>
+
+    <style name="NoteTheme" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorNotePrimary</item>
+        <item name="colorPrimaryDark">@color/colorNotePrimaryDark</item>
+        <item name="colorAccent">@color/colorNoteAccent</item>
+        <item name="android:windowBackground">@color/colorNoteWindowBackground</item>
+        <item name="android:statusBarColor">@color/colorNotePrimary</item>
+        <item name="android:navigationBarColor">@color/colorNotePrimary</item>
+        <item name="android:textColorPrimary">@color/textColorPrimary</item>
+        <item name="android:textColorSecondary">@color/windowBackground</item>
+        <item name="colorControlHighlight">@color/colorNoteWindowBackground</item>
+        <item name="colorControlNormal">@color/colorNotePrimary</item>
+        <item name="colorControlActivated">@color/colorNoteWindowBackground</item>
+
+
+    </style>
+
+
+    <style name="Title" parent="Widget.AppCompat.TextView">
+        <item name="android:textSize">35sp</item>
+        <item name="android:layout_margin">10dp</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:textColor">@color/textColorPrimary</item>
+        <item name="android:fontFamily">cursive</item>
+    </style>
+
+    <style name="ItemPostText" parent="Widget.AppCompat.TextView">
+        <item name="android:textColor">@color/textColorSecondary</item>
+        <item name="android:fontFamily">sans-serif-condensed-light</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:textAlignment">center</item>
+
+    </style>
+
+    <style name="NoteTitle" parent="Widget.AppCompat.TextView">
+
+        <item name="android:textSize">30sp</item>
+        <item name="android:layout_margin">10dp</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:textColor">@color/textColorSecondary</item>
+        <item name="android:fontFamily">sans-serif-condensed-light</item>
+
+
+    </style>
+
+    <style name="noteText" parent="Widget.AppCompat.TextView">
+        <item name="android:textColor">@color/textColorPrimary</item>
+        <item name="android:fontFamily">sans-serif-condensed-light</item>
+        <item name="android:textSize">18sp</item>
+
+    </style>
+
+    <style name="ToolbarTheme" parent="@style/ThemeOverlay.AppCompat.ActionBar">
+        <!-- Customize color of navigation drawer icon and back arrow -->
+        <item name="colorControlNormal">@color/textColorPrimary</item>
+    </style>
+
+    <style name="ToolbarThemeAc" parent="@style/ThemeOverlay.AppCompat.ActionBar">
+        <!-- Customize color of navigation drawer icon and back arrow -->
+        <item name="colorControlNormal">@color/textColorSecondary</item>
+    </style>
+
+    <style name="backgroundsplash" parent="AppTheme">
+        <item name="android:windowBackground">@drawable/splash</item>
+
+    </style>
+
+
+</resources>

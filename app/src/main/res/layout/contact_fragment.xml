@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+<variable name="fragment" type="com.aryanganotra.jmceconomics.notes.ui.ContactFragment"/>
+    </data>
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/windowBackground"
+            android:clickable="true"
+    >
+
+        <com.google.android.material.appbar.AppBarLayout android:layout_width="match_parent"
+                                                         android:layout_height="wrap_content"
+                                                         app:elevation="0dp"
+                                                         android:background="@color/windowBackground"
+        >
+            <com.google.android.material.appbar.MaterialToolbar
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/toolbar"
+                    android:clickable="true"
+                    android:outlineSpotShadowColor="@color/navigationBarColor"
+                    android:outlineAmbientShadowColor="@color/navigationBarColor"
+                    android:theme="@style/ToolbarTheme"
+
+
+                    android:background="@color/windowBackground">
+
+                <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent"
+                              android:orientation="horizontal">
+
+
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                              android:textColor="@color/textColorPrimary"
+                              android:text="@string/app_name"
+                              android:textAlignment="center"
+                              android:textAppearance="@style/NoteTitle"/>
+
+
+                </LinearLayout>
+
+
+            </com.google.android.material.appbar.MaterialToolbar>
+            >
+
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <ScrollView android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+        >
+
+            <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+                          android:layout_gravity="center"
+                          android:gravity="center"
+                          android:orientation="vertical">
+
+                <ImageView android:layout_width="200dp" android:layout_height="200dp"
+                           android:layout_gravity="center"
+                           android:src="@drawable/logo"/>
+
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                          android:text="@string/hi"
+                          android:textAppearance="@style/NoteTitle"
+                          android:textColor="@color/textColorPrimary"
+
+
+                />
+
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                          android:textAppearance="@style/NoteTitle"
+                          android:textColor="@color/textColorPrimary"
+
+                          android:textAlignment="center"
+
+                          android:text="@string/contact"/>
+
+
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                              android:orientation="horizontal"
+                              android:layout_margin="10dp"
+                              android:padding="10dp"
+                              android:gravity="center"
+                              android:weightSum="6">
+
+                    <ImageView android:layout_width="50dp" android:layout_height="50dp"
+                               android:src="@drawable/facebooklarge"
+                               android:layout_weight="1"
+                               android:id="@+id/fb"
+                               android:background="?attr/selectableItemBackground"
+                               android:foreground="?android:attr/selectableItemBackground"
+
+
+                    />
+                    <ImageView android:layout_width="50dp" android:layout_height="50dp"
+                               android:src="@drawable/instalarge"
+                               android:layout_weight="1"
+                               android:id="@+id/insta"
+                               android:background="?attr/selectableItemBackground"
+                               android:foreground="?android:attr/selectableItemBackground"
+
+
+                    />
+                    <ImageView android:layout_width="50dp" android:layout_height="50dp"
+                               android:src="@drawable/gmail"
+                               android:layout_weight="1"
+                               android:id="@+id/gmail"
+                               android:background="?attr/selectableItemBackground"
+                               android:foreground="?android:attr/selectableItemBackground"
+
+                    />
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+
+        </ScrollView>
+
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

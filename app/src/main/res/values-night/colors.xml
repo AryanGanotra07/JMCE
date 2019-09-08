@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="colorPrimary">#757575</color>
+    <color name="colorPrimaryDark">#424242</color>
+    <color name="colorAccent">#FFFFFF</color>
+    <color name="windowBackground">#212121</color>
+    <color name="navigationBarColor">#757575</color>
+    <color name="textColorPrimary">#FFFFFF</color>
+    <color name="textColorSecondary">#FFFFFF</color>
+    <color name="cardBackground">#757575</color>
+    <color name="black">#000000</color>
+
+    <color name="colorNotePrimary">#212121</color>
+    <color name="colorNotePrimaryDark">#0d47a1</color>
+    <color name="colorNoteAccent">#e65100</color>
+    <color name="colorNoteWindowBackground">#424242</color>
+    <color name="tabIndicatorColor">#18ffff</color>
+
+
+    #e3f2fd
+</resources>

@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">JMC Economics</string>
+    <string name="retry">Retry</string>
+    <string name="post_Error">An error occurred while loading the posts</string>
+    <string name="search">Search</string>
+    <string name="contrarian">The Contrarian</string>
+    <string name="resources">RESOURCES</string>
+    <string name="darkmode">Dark Mode</string>
+    <string name="lightmode">Light Mode</string>
+    <string name="hi">Hi!</string>
+    <string name="contact">For any query, contact JMC Economics Department</string>
+
+</resources>
