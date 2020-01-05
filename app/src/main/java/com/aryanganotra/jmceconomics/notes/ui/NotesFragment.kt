@@ -1,26 +1,29 @@
 package com.aryanganotra.jmceconomics.notes.ui
 
+import android.app.Activity
 import android.os.Bundle
-import android.util.Log
+
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
+
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.aryanganotra.jmceconomics.R
 import com.aryanganotra.jmceconomics.databinding.NotesFragmentBinding
-import com.aryanganotra.jmceconomics.notes.model.Tab
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
+import com.aryanganotra.jmceconomics.notes.ui.noteslist.NotesViewModelFactory
+import com.aryanganotra.jmcemanager.model.Course
 import kotlinx.android.synthetic.main.notes_fragment.*
+
 
 class NotesFragment() : Fragment() {
     private lateinit var binding : NotesFragmentBinding
+    private lateinit var notesListViewModel: NotesListViewModel
     private val adapter : SubjectListAdapter = SubjectListAdapter()
      internal lateinit var callback : CourseClickListener
 
@@ -39,12 +42,40 @@ class NotesFragment() : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
        binding = DataBindingUtil.inflate(inflater,R.layout.notes_fragment,container,false)
+
         binding.viewModel= this
         binding.recyclerView.layoutManager = LinearLayoutManager(context,RecyclerView.VERTICAL,false)
-        val tab = arguments!!.get("tab") as Tab
-        adapter.setTab(tab)
         retainInstance = true
         return binding.root
+
+
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        notesListViewModel = ViewModelProviders.of(this,
+            NotesViewModelFactory(activity!!.application,context as AppCompatActivity)
+        ).get(NotesListViewModel:: class.java)
+        val tab = arguments!!.get("tab") as Int
+        notesListViewModel.getCoursesLiveData().observe(this, Observer {
+            progress_circular.visibility = View.GONE
+            if (it!=null)
+            {
+                val courses = it.filter { course -> course.year == tab+1 }
+                if (courses.isNullOrEmpty())
+                {
+                    adapter.setCourses(ArrayList())
+                }
+                else
+                {
+                    adapter.setCourses(courses as ArrayList<Course>)
+                }
+            }
+            else
+            {
+                adapter.setCourses(ArrayList())
+            }
+        })
 
 
     }
@@ -54,7 +85,7 @@ class NotesFragment() : Fragment() {
 
 
     interface CourseClickListener  {
-        fun onCourseClicked(course : Tab.Course)
+        fun onCourseClicked(course : Course)
     }
 
     fun getCourseListAdapter() : SubjectListAdapter{

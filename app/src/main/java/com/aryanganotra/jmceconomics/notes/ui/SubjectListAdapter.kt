@@ -9,11 +9,11 @@ import androidx.recyclerview.widget.AdapterListUpdateCallback
 import androidx.recyclerview.widget.RecyclerView
 import com.aryanganotra.jmceconomics.R
 import com.aryanganotra.jmceconomics.databinding.ItemCourseBinding
-import com.aryanganotra.jmceconomics.notes.model.Tab
+import com.aryanganotra.jmcemanager.model.Course
 
 class SubjectListAdapter() : RecyclerView.Adapter<SubjectListAdapter.ViewHolder>() {
 
-    private lateinit var tab : Tab
+    private lateinit var courses : ArrayList<Course>
     private lateinit var callback : NotesFragment.CourseClickListener
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -27,8 +27,8 @@ class SubjectListAdapter() : RecyclerView.Adapter<SubjectListAdapter.ViewHolder>
     }
 
     override fun getItemCount(): Int {
-       if (::tab.isInitialized){
-           return tab.courses.size
+       if (::courses.isInitialized){
+           return courses.size
        }
         else{
            return 0
@@ -37,12 +37,12 @@ class SubjectListAdapter() : RecyclerView.Adapter<SubjectListAdapter.ViewHolder>
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
-        holder.bind(tab.courses.get(position))
+        holder.bind(courses.get(position))
 
     }
 
-    fun setTab(tab : Tab){
-        this.tab = tab
+    fun setCourses(courses : ArrayList<Course>){
+        this.courses = courses
         notifyDataSetChanged()
     }
 
@@ -50,7 +50,7 @@ class SubjectListAdapter() : RecyclerView.Adapter<SubjectListAdapter.ViewHolder>
 
     class ViewHolder(private val binding: ItemCourseBinding, private val callback: NotesFragment.CourseClickListener) : RecyclerView.ViewHolder(binding.root) {
         val viewModel : NotesViewModel = NotesViewModel()
-               fun bind(course : Tab.Course){
+               fun bind(course : Course){
                    viewModel.bind(course)
                    binding.viewModel = viewModel
 

@@ -26,12 +26,13 @@ import androidx.viewpager.widget.ViewPager
 import com.aryanganotra.jmceconomics.R
 import com.aryanganotra.jmceconomics.databinding.ActivityNotesBinding
 import com.aryanganotra.jmceconomics.notes.TabAdapter
-import com.aryanganotra.jmceconomics.notes.model.Tab
+import com.aryanganotra.jmceconomics.notes.model.Note
 import com.aryanganotra.jmceconomics.notes.ui.noteslist.NotesListFragment
 import com.aryanganotra.jmceconomics.notes.ui.noteslist.NotesViewModelFactory
+import com.aryanganotra.jmcemanager.model.Course
 
 class NotesActivity : AppCompatActivity(), NotesFragment.CourseClickListener , NoteClickListener {
-    override fun onNoteClick(note: Tab.Course.Note) {
+    override fun onNoteClick(note: Note) {
         if (CheckPermission()) {
             if (!note.downloadUrl.isNullOrEmpty())
             viewModel.startDownload(note)
@@ -86,7 +87,7 @@ class NotesActivity : AppCompatActivity(), NotesFragment.CourseClickListener , N
     }
 
 
-    override fun onCourseClicked(course: Tab.Course) {
+    override fun onCourseClicked(course: Course) {
 val fragmentTransaction = fragmentManager.beginTransaction()
         val fragment  = NotesListFragment()
         val bundle = Bundle()
@@ -107,7 +108,7 @@ val fragmentTransaction = fragmentManager.beginTransaction()
     private val fragmentManager = supportFragmentManager
     private lateinit var binding:ActivityNotesBinding
     lateinit var viewPager: ViewPager
-    private val adapter : TabAdapter = TabAdapter(supportFragmentManager , 6)
+    private val adapter : TabAdapter = TabAdapter(supportFragmentManager , 6,this)
     private lateinit var  sharedPrefEditor : SharedPreferences.Editor
     private lateinit var sharedPref : SharedPreferences
 
@@ -154,9 +155,7 @@ val fragmentTransaction = fragmentManager.beginTransaction()
         viewPager.adapter = this.getAdapter()
         binding.tabLayout.setupWithViewPager(viewPager)
 
-        viewModel.getTabLiveData().observe(this , Observer {
-            getAdapter().setTabs(it)
-        })
+
 
 
 

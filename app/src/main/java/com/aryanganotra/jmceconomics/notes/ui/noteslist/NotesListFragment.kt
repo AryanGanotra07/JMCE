@@ -9,18 +9,23 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.aryanganotra.jmceconomics.R
 import com.aryanganotra.jmceconomics.databinding.NotesListFragmentBinding
-import com.aryanganotra.jmceconomics.notes.model.Tab
+import com.aryanganotra.jmceconomics.notes.model.Note
 import com.aryanganotra.jmceconomics.notes.ui.NoteClickListener
+import com.aryanganotra.jmceconomics.notes.ui.NotesListViewModel
+import com.aryanganotra.jmcemanager.model.Course
 
 class NotesListFragment : Fragment() {
 
     private lateinit var binding : NotesListFragmentBinding
     private lateinit var adapter : NotesListAdapter
     private lateinit var callback : NoteClickListener
+    private lateinit var notesViewModel: NotesListViewModel
 
     fun setOnNoteClickListener (callback : NoteClickListener){
         this.callback = callback
@@ -47,21 +52,37 @@ class NotesListFragment : Fragment() {
 
         binding = DataBindingUtil.inflate(inflater , R.layout.notes_list_fragment, container, false)
         binding.viewModel = this
-        val course = arguments!!.get("course") as Tab.Course
-        adapter.setNotesList(course.notes)
-        binding.recyclerView.layoutManager = LinearLayoutManager(context , RecyclerView.VERTICAL, false)
 
+        binding.recyclerView.layoutManager = LinearLayoutManager(context , RecyclerView.VERTICAL, false)
+        val course = arguments!!.get("course") as Course
         (activity as AppCompatActivity).setSupportActionBar(binding.toolbar)
         (activity as AppCompatActivity).supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         (activity as AppCompatActivity).supportActionBar!!.setDisplayShowHomeEnabled(true)
         binding.titleToolbar.text = course.courseName
 
         binding.sendNote.setOnClickListener(onClickListener)
-
-
-
         return binding.root
 
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val course = arguments!!.get("course") as Course
+
+        notesViewModel = ViewModelProviders.of(this,
+            NotesViewModelFactory(activity!!.application,context as AppCompatActivity)
+        ).get(NotesListViewModel:: class.java)
+        notesViewModel.getNotesLiveData().observe(this, Observer {
+            if (it!=null)
+            {
+                val notes = it.filter { note -> note.subId == course.id }
+                adapter.setNotesList(notes as ArrayList<Note>)
+            }
+            else
+            {
+                adapter.setNotesList(ArrayList())
+            }
+        })
     }
 
     private val onClickListener : View.OnClickListener = View.OnClickListener {

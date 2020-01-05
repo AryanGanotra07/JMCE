@@ -9,5 +9,11 @@
     <string name="lightmode">Light Mode</string>
     <string name="hi">Hi!</string>
     <string name="contact">For any query, contact JMC Economics Department</string>
+    <string name="tab_text_1">First Semester</string>
+    <string name="tab_text_2">Second Semester</string>
+    <string name="tab_text_3">Third Semester</string>
+    <string name="tab_text_4">Fourth Semester</string>
+    <string name="tab_text_5">Fifth Semester</string>
+    <string name="tab_text_6">Sixth Semester</string>
 
 </resources>

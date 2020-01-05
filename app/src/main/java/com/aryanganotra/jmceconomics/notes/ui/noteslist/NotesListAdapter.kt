@@ -8,15 +8,16 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.aryanganotra.jmceconomics.R
 import com.aryanganotra.jmceconomics.databinding.ItemNoteBinding
-import com.aryanganotra.jmceconomics.notes.model.Tab
+import com.aryanganotra.jmceconomics.notes.model.Note
 import com.aryanganotra.jmceconomics.notes.ui.NoteClickListener
 
 class NotesListAdapter(private val callback : NoteClickListener) : RecyclerView.Adapter<NotesListAdapter.ViewHolder>() {
 
-    private lateinit var notes : List<Tab.Course.Note>
+    private lateinit var notes : ArrayList<Note>
 
-    fun setNotesList (notes : List<Tab.Course.Note>){
+    fun setNotesList (notes : ArrayList<Note>){
         this.notes = notes
+        notifyDataSetChanged()
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -41,7 +42,7 @@ holder.bind(notes[position])
 
     class ViewHolder(private val binding : ItemNoteBinding ,private val callback: NoteClickListener) : RecyclerView.ViewHolder(binding.root){
         val viewModel : NoteListViewModel = NoteListViewModel()
- fun bind(note : Tab.Course.Note){
+ fun bind(note : Note){
      viewModel.bind(note)
      binding.viewModel = viewModel
 

@@ -125,13 +125,15 @@ class PostListActivity: AppCompatActivity(), PostClickListener {
 
 
 
-
+/*
         viewModel.loadPost.observe(this,Observer {
             loadPost ->
 
 
 
         })
+
+        */
 
 
 

@@ -17,11 +17,10 @@
                                           >
 
 
-
         <androidx.recyclerview.widget.RecyclerView android:layout_width="match_parent"
                                                    android:layout_height="match_parent"
                                                    app:adapter="@{viewModel.getCourseListAdapter()}"
-
+                                        android:background="@color/windowBackground"
                                                    android:scrollbars="vertical"
                                                    android:scrollbarStyle="outsideInset"
                                                    android:scrollbarTrackVertical="@color/colorNoteWindowBackground"
@@ -29,6 +28,15 @@
                                                    android:id="@+id/recycler_view">
 
         </androidx.recyclerview.widget.RecyclerView>
+
+            <ProgressBar
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:id="@+id/progress_circular"
+                    android:indeterminateTint="@color/tabIndicatorColor"
+                    />
+
 
 
         </androidx.cardview.widget.CardView>

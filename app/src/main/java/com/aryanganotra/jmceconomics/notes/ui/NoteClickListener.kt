@@ -1,9 +1,10 @@
 package com.aryanganotra.jmceconomics.notes.ui
 
-import com.aryanganotra.jmceconomics.notes.model.Tab
+import com.aryanganotra.jmceconomics.notes.model.Note
+
 
 interface NoteClickListener {
 
-    fun onNoteClick(note : Tab.Course.Note)
+    fun onNoteClick(note : Note)
 
 }
